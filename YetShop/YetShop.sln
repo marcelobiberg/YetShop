@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yet.Core", "Yet.Core\Yet.Core.csproj", "{B5452419-B4BD-4476-B6D9-CCBB73120F01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yet.Core", "Yet.Core\Yet.Core.csproj", "{B5452419-B4BD-4476-B6D9-CCBB73120F01}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{FE79C4DB-D2CE-43E9-BC27-DE3D0CB95913}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3A22B2D7-E2E9-47FF-B035-16AB3C7F086F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{C65CA1DD-BBD8-4BE9-84C1-87259CAF7759}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{C65CA1DD-BBD8-4BE9-84C1-87259CAF7759}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
