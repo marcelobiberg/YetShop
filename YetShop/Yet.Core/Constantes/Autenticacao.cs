@@ -1,13 +1,19 @@
 ﻿namespace Yet.Core.Constantes
 {
-    class Autenticacao
+    public static class Autenticacao
     {
         public const string AUTH_KEY = "AuthKeyOfDoomThatMustBeAMinimumNumberOfBytes";
 
-        // TODO: Não usar em produção
-        public const string DEFAULT_PASSWORD = "default";
-
-        // TODO: Mudar para variável de ambiente
         public const string SECRET_KEY = "SecretKeyOfDoomThatMustBeAMinimumNumberOfBytes";
+
+        public const string USUARIO_PADRAO = "default";
+
+        public const string SENHA_PADRAO = "yet2020";
+
+        public const string PERFIL_ADMINISTRADOR = "Administrador";
+        
+        public const string EMAIL_ADMINISTRADOR = "biberg.marcelo@gmail.com";
+        
+        public const string USUARIO_ADMINISTRADOR = "Marcelo Biberg";
     }
 }
