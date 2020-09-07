@@ -8,6 +8,32 @@ Este e-book foi utilizado no proejto como material de apoio. [ Architecting Mode
 
 Este projeto foi desenvolvido com os princípios de 'Clean Code' & 'Clean Architecture', segue algumas das referências na nossa [wiki](https://github.com/marcelobiberg/YetShop/wiki). 
 
+###Adicionar migrations e atualizar o banco de dados
+
+1. No projeto yet.Infrasctructure via Powershell executar os seguintes comandos:
+
+##Migrations
+
+Adicionar "migration" para o banco de catálago de produtos
+```
+add-migration CatalogoIncial -Context CatalogoContext -o 'Caminho para Data/Migrations'
+```
+Adicionar "migration" para o banco de autenticação ( Identity )
+```
+add-migration IdentityIncial -Context AppIdentityDbContext -o 'Caminho para Identity/Migrations'
+```
+
+##Update-database
+
+Cria o banco de dados do catálago baseado na 'Migration' criada acima
+```
+update-database CatalogoIncial
+```
+Cria o banco de dados de autenticação
+```
+update-database IdentityIncial
+```
+
 ## Tecnologias
 * ASP.NET Core 3.1.2
 * EF Core 3.1.2
