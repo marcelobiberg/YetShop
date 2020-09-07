@@ -8,7 +8,11 @@ Este e-book foi utilizado no proejto como material de apoio. [ Architecting Mode
 
 Este projeto foi desenvolvido com os princípios de 'Clean Code' & 'Clean Architecture', segue algumas das referências na nossa [wiki](https://github.com/marcelobiberg/YetShop/wiki). 
 
-###Adicionar migrations e atualizar o banco de dados
+Este projeto consiste em dois banco de dados
+* Catálogo de produtos
+* Autenticação ( Microsoft Identity )
+
+### Adicionar migrations e atualizar o banco de dados
 
 1. No projeto yet.Infrasctructure via Powershell executar os seguintes comandos:
 
