@@ -12,7 +12,7 @@ Este projeto foi desenvolvido com os princípios de 'Clean Code' & 'Clean Archit
 
 1. No projeto yet.Infrasctructure via Powershell executar os seguintes comandos:
 
-##Migrations
+## Migrations
 
 Adicionar "migration" para o banco de catálago de produtos
 ```
@@ -23,7 +23,7 @@ Adicionar "migration" para o banco de autenticação ( Identity )
 add-migration IdentityIncial -Context AppIdentityDbContext -o 'Caminho para Identity/Migrations'
 ```
 
-##Update-database
+## Update-database
 
 Cria o banco de dados do catálago baseado na 'Migration' criada acima
 ```
