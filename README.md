@@ -22,9 +22,8 @@ Este projeto foi desenvolvido com os princípios de 'Clean Code' & 'Clean Archit
 Segue URL para acessar o projeto em desenvolvimento . . .
 
 ## Reportar Bugs
-* [Issue](https://github.com/marcelobiberg/YetShop/issues)
 
-Para relatar Bugs usar o sistemas de Issues
+Para relatar Bugs usar o sistemas de [Issues](https://github.com/marcelobiberg/YetShop/issues)
 
 ## Developer
 
