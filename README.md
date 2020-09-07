@@ -6,7 +6,7 @@ A base deste proejto foi desenvolvida com bae no projeto desenvolvido pela Micro
 
 Este e-book foi utilizado no proejto como material de apoio. [Clean Architecture](https://dotnet.microsoft.com/download/e-book/aspnet/pdf)
 
-Este projeto foi desenvolvido com os princípios de 'Clean Code' & 'Clean Architecture'.
+Este projeto foi desenvolvido com os princípios de 'Clean Code' & 'Clean Architecture', segue algumas das referências na nossa [wiki](https://github.com/marcelobiberg/YetShop/wiki). 
 
 ## Tecnologias
 * ASP.NET Core 3.1.2
