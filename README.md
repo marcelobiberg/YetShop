@@ -24,7 +24,3 @@ Segue URL para acessar o projeto em desenvolvimento . . .
 ## Reportar Bugs
 
 Para relatar Bugs usar o sistemas de [Issues](https://github.com/marcelobiberg/YetShop/issues)
-
-## Developer
-
-* [Marcelo Biberg](https://github.com/marcelobiberg)
