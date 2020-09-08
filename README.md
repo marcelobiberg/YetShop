@@ -20,7 +20,7 @@ Este projeto consiste em dois banco de dados
 
 Adicionar "migration" para o banco de catálago de produtos
 ```
-add-migration CatalogoIncial -Context CatalogoContext -o 'Caminho para Data/Migrations'
+add-migration CatalogoIncial -Context CatalogoContexto -o 'Caminho para Data/Migrations'
 ```
 Adicionar "migration" para o banco de autenticação ( Identity )
 ```
