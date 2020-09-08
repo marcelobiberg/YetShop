@@ -12,6 +12,8 @@ namespace Yet.Core.Entidades.CestaAgregar
         #endregion
 
         #region Ctor
+        public Cesta() { }
+
         public Cesta(string compradorId)
         {
             CompradorId = compradorId;

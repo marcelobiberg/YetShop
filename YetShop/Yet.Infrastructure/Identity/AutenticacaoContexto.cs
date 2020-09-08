@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using yet.Infrastructure.Identity;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Yet.Infrastructure.Identity
 {
-    public class AppIdentityDbContext : IdentityDbContext<ApplicationUser>
+    public class AutenticacaoContexto : IdentityDbContext<UsuarioApp>
     {
-        public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options)
+        public AutenticacaoContexto(DbContextOptions<AutenticacaoContexto> options)
             : base(options)
         {
         }
@@ -14,6 +13,7 @@ namespace Yet.Infrastructure.Identity
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            builder.HasDefaultSchema("Yet-Shop.Auth");
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);

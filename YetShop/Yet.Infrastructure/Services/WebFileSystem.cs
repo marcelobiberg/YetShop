@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Yet.Core.Interfaces;
 using Yet.Infrastructure.Data;
 
-namespace Microsoft.eShopWeb.Infrastructure.Services
+namespace Yet.Infrastructure.Services
 {
     public class WebFileSystem : IFileSystem
     {

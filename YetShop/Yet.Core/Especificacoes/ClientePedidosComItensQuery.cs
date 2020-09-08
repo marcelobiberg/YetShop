@@ -8,7 +8,7 @@ namespace Yet.Core.Especificacoes
         public ClientePedidosComItensQuery(string compradorId)
         {
             Query.Where(o => o.CompradorId == compradorId)
-                .Include(o => o.PedidoItems)
+                .Include(o => o.PedidoItens)
                     .ThenInclude(i => i.ItemPedido);
         }
     }

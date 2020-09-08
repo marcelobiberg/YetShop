@@ -9,7 +9,7 @@
         #endregion
 
         #region Ctor
-        private PedidoItem() { }
+        public PedidoItem() { }
 
         public PedidoItem(CatalogoItemPedido itemPedido, decimal precoUnit, int units)
         {

@@ -11,6 +11,7 @@ namespace Yet.Infrastructure.Data.Config
             var navigation = builder.Metadata.FindNavigation(nameof(Cesta.Items));
             navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
 
+            builder.ToTable("Cestas");
             builder.Property(b => b.CompradorId)
                 .IsRequired()
                 .HasMaxLength(40);

@@ -8,6 +8,7 @@ namespace Yet.Infrastructure.Data.Config
     {
         public void Configure(EntityTypeBuilder<PedidoItem> builder)
         {
+            builder.ToTable("PedidoItens");
             builder.OwnsOne(i => i.ItemPedido, io =>
             {
                 io.WithOwner();

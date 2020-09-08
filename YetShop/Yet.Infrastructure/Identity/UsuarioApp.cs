@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace yet.Infrastructure.Identity
+namespace Yet.Infrastructure.Identity
 {
-    public class ApplicationUser : IdentityUser
+    public class UsuarioApp : IdentityUser
     {
         //TODO: se necessário colocar as novas propriedades do usuário aqui
     }

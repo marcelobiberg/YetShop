@@ -8,10 +8,11 @@ namespace Yet.Infrastructure.Data.Config
     {
         public void Configure(EntityTypeBuilder<Pedido> builder)
         {
-            var navigation = builder.Metadata.FindNavigation(nameof(Pedido.PedidoItems));
+            var navigation = builder.Metadata.FindNavigation(nameof(Pedido.PedidoItens));
 
             navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
 
+            builder.ToTable("Pedidos");
             builder.OwnsOne(o => o.EnderecoEntrega, a =>
             {
                 a.WithOwner();
