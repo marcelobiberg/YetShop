@@ -4,14 +4,14 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200907203643_CatalogoIncial.cs" />
+    <Compile Remove="Data\Migrations\20200907203643_CatalogoIncial.Designer.cs" />
+  </ItemGroup>
+
   <!-- Referencia o projeto yet.Core -->
   <ItemGroup>
     <ProjectReference Include="..\yet.Core\yet.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\Migrations\" />
-    <Folder Include="Identity\Migrations\" />
   </ItemGroup>
 
   <ItemGroup>

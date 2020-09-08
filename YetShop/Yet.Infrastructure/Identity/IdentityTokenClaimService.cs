@@ -6,17 +6,16 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using yet.Infrastructure.Identity;
 using Yet.Core.Constantes;
 using Yet.Core.Interfaces;
 
-namespace Microsoft.eShopWeb.Infrastructure.Identity
+namespace Yet.Infrastructure.Identity
 {
     public class IdentityTokenClaimService : ITokenServico
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<UsuarioApp> _userManager;
 
-        public IdentityTokenClaimService(UserManager<ApplicationUser> userManager)
+        public IdentityTokenClaimService(UserManager<UsuarioApp> userManager)
         {
             _userManager = userManager;
         }

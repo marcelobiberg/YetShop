@@ -7,6 +7,8 @@
         #endregion
 
         #region Ctor
+        public CatalogoMarca() { }
+
         public CatalogoMarca(string marca)
         {
             Marca = marca;

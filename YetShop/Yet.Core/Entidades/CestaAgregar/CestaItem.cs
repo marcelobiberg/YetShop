@@ -12,6 +12,8 @@ namespace Yet.Core.Entidades.CestaAgregar
         #endregion
 
         #region Ctor
+        public CestaItem() { }
+
         public CestaItem(int catalogoItemId, int quantidade, decimal precoUnit)
         {
             CatalogoItemId = catalogoItemId;

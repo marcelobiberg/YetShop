@@ -7,6 +7,8 @@
         #endregion
 
         #region Ctor
+        public CatalogoTipo() { }
+
         public CatalogoTipo(string tipo)
         {
             Tipo = tipo;

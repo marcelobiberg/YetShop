@@ -16,11 +16,11 @@ namespace Yet.Infrastructure.Data
     public class EfRepo<T> : IRepoAsync<T> where T : EntidadeBase
     {
         #region Campos
-        protected readonly CatalogoContext _dbContext;
+        protected readonly CatalogoContexto _dbContext;
         #endregion
 
         #region Ctor
-        public EfRepo(CatalogoContext dbContext)
+        public EfRepo(CatalogoContexto dbContext)
         {
             _dbContext = dbContext;
         }

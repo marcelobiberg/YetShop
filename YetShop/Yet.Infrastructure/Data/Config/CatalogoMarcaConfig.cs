@@ -8,10 +8,11 @@ namespace Yet.Infrastructure.Data.Config
     {
         public void Configure(EntityTypeBuilder<CatalogoMarca> builder)
         {
+            builder.ToTable("CatalogoMarcas");
             builder.HasKey(ci => ci.Id);
 
             builder.Property(ci => ci.Id)
-               .UseHiLo("catalog_brand_hilo")
+               .UseHiLo("catalogo_marca_hilo")
                .IsRequired();
 
             builder.Property(cb => cb.Marca)

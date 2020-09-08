@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Yet.Core.Entidades.CatalogoAgregar;
 
-namespace Microsoft.eShopWeb.Infrastructure.Data.Config
+namespace Yet.Infrastructure.Data.Config
 {
     public class CatalogoItemConfig : IEntityTypeConfiguration<CatalogoItem>
     {
@@ -11,7 +11,7 @@ namespace Microsoft.eShopWeb.Infrastructure.Data.Config
             builder.ToTable("Catalogo");
 
             builder.Property(ci => ci.Id)
-                .UseHiLo("catalog_hilo")
+                .UseHiLo("catalogo_hilo")
                 .IsRequired();
 
             builder.Property(ci => ci.Nome)
@@ -21,7 +21,7 @@ namespace Microsoft.eShopWeb.Infrastructure.Data.Config
             builder.Property(ci => ci.Preco)
                 .IsRequired(true)
                 .HasColumnType("decimal(18,2)");
-                
+
             builder.Property(ci => ci.ImagemUri)
                 .IsRequired(false);
 

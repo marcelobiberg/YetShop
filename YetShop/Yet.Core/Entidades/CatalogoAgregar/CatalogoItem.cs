@@ -20,6 +20,8 @@ namespace Yet.Core.Entidades.CatalogoAgregar
         #endregion
 
         #region Ctor
+        public CatalogoItem() { }
+
         public CatalogoItem(int catalogoTipoId,
             int catalogoMarcaId,
             string desc,
@@ -43,7 +45,7 @@ namespace Yet.Core.Entidades.CatalogoAgregar
         /// <param name="nome">Nome do item</param>
         /// <param name="descricao">Descrição do item</param>
         /// <param name="preco">Preço do item</param>
-        public void UpdateDetalhes(string nome, string descricao, decimal preco)
+        public void DetalhesUpdate(string nome, string descricao, decimal preco)
         {
             Guard.Against.NullOrEmpty(nome, nameof(nome));
             Guard.Against.NullOrEmpty(descricao, nameof(descricao));
@@ -58,7 +60,7 @@ namespace Yet.Core.Entidades.CatalogoAgregar
         /// Atualiza detalhes do catálago
         /// </summary>
         /// <param name="catalogoMarcaId">ID da marca do catálago</param>
-        public void UpdateMarca(int catalogoMarcaId)
+        public void MarcaUpdate(int catalogoMarcaId)
         {
             Guard.Against.Zero(catalogoMarcaId, nameof(catalogoMarcaId));
             CatalogoMarcaId = catalogoMarcaId;
@@ -68,7 +70,7 @@ namespace Yet.Core.Entidades.CatalogoAgregar
         /// Atualiza tipo do catálago
         /// </summary>
         /// <param name="catalogoTipoId">ID da tipo do catálago</param>
-        public void UpdateTipo(int catalogoTipoId)
+        public void TipoUpdate(int catalogoTipoId)
         {
             Guard.Against.Zero(catalogoTipoId, nameof(catalogoTipoId));
             CatalogoTipoId = catalogoTipoId;
@@ -78,7 +80,7 @@ namespace Yet.Core.Entidades.CatalogoAgregar
         /// Atualiza URI da imagem do catá
         /// </summary>
         /// <param name="imagemUri">URI da imagem doi catálogo</param>
-        public void UpdateImagemUri(string imagemUri)
+        public void ImagemUriUpdate(string imagemUri)
         {
             if (string.IsNullOrEmpty(imagemUri))
             {

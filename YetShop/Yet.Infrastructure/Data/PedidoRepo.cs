@@ -7,13 +7,13 @@ namespace Yet.Infrastructure.Data
 {
     public class PedidoRepo : EfRepo<Pedido>, IPedidoRepo
     {
-        public PedidoRepo(CatalogoContext dbContext) : base(dbContext) { }
+        public PedidoRepo(CatalogoContexto dbContext) : base(dbContext) { }
 
         public Task<Pedido> ObterPedidoPorIdAsync(int id)
         {
             return _dbContext.Pedidos
-                .Include(o => o.PedidoItems)
-                .Include($"{nameof(Pedido.PedidoItems)}.{nameof(PedidoItem.ItemPedido)}")
+                .Include(o => o.PedidoItens)
+                .Include($"{nameof(Pedido.PedidoItens)}.{nameof(PedidoItem.ItemPedido)}")
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
     }

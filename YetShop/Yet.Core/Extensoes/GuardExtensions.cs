@@ -10,7 +10,7 @@ namespace Ardalis.GuardClauses
         public static void NullCesta(this IGuardClause guardClause, int cestatId, Cesta cesta)
         {
             if (cesta == null)
-                throw new CestaNotFoundException(cestatId);
+                throw new CestaNaoEncontradaException(cestatId);
         }
 
         public static void CestaVaziaAoFinalizar(this IGuardClause guardClause, IReadOnlyCollection<CestaItem> itensCesta)

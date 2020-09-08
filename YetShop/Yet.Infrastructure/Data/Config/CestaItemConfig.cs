@@ -8,6 +8,7 @@ namespace Yet.Infrastructure.Data.Config
     {
         public void Configure(EntityTypeBuilder<CestaItem> builder)
         {
+            builder.ToTable("CestaItens");
             builder.Property(bi => bi.PrecoUnit)
                 .IsRequired(true)
                 .HasColumnType("decimal(18,2)");
