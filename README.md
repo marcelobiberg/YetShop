@@ -31,11 +31,11 @@ add-migration IdentityIncial -Context AppIdentityDbContext -o 'Copie o caminho c
 
 Cria o banco de dados do catálago baseado na 'Migration' criada acima
 ```
-update-database CatalogoIncial
+update-database -Context CatalogoContexto
 ```
 Cria o banco de dados de autenticação
 ```
-update-database IdentityIncial
+update-database -Context AppIdentityDbContext
 ```
 
 ## Tecnologias
