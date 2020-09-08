@@ -35,7 +35,7 @@ update-database -Context CatalogoContexto
 ```
 Cria o banco de dados de autenticação
 ```
-update-database -Context AppIdentityDbContext
+update-database -Context AutenticacaoContexto
 ```
 
 ## Tecnologias
