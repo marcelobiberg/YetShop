@@ -4,9 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <!-- Referencia o projeto yet.Core & Yet.Infrastructure-->
+  <!-- Referencia o projeto Yet.Core & Yet.Infrastructure-->
   <ItemGroup>
-    <ProjectReference Include="..\yet.Core\yet.Core.csproj" />
+    <ProjectReference Include="..\Yet.Core\Yet.Core.csproj" />
     <ProjectReference Include="..\Yet.Infrastructure\Yet.Infrastructure.csproj" />
   </ItemGroup>
 

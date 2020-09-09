@@ -37,6 +37,7 @@ namespace Yet.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+
             var cultureInfo = new CultureInfo("pt-BR");
             cultureInfo.NumberFormat.CurrencySymbol = "R$";
 
