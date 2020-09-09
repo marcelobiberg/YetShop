@@ -8,18 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using Yet.Core.Constantes;
 using Yet.Core.Interfaces;
+using Yet.Infrastructure.Identity;
 
-namespace Yet.Infrastructure.Identity
+namespace Yet.Infrastructure.Servicos
 {
-    public class IdentityTokenClaimService : ITokenServico
+    public class AutenticacaoTokenServico : ITokenServico
     {
+        #region Campos
         private readonly UserManager<UsuarioApp> _userManager;
+        #endregion
 
-        public IdentityTokenClaimService(UserManager<UsuarioApp> userManager)
+        #region Ctor
+        public AutenticacaoTokenServico(UserManager<UsuarioApp> userManager)
         {
             _userManager = userManager;
         }
+        #endregion
 
+        #region Métodos
         public async Task<string> ObterTokenAsync(string userName)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -42,5 +48,6 @@ namespace Yet.Infrastructure.Identity
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+        #endregion
     }
 }

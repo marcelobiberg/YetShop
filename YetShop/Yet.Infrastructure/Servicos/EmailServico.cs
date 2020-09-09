@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Yet.Core.Interfaces;
 
-namespace Yet.Infrastructure.Services
+namespace Yet.Infrastructure.Servicos
 {
     /// <summary>
     /// Objeto responsável por manipular o e-mail
     /// </summary>
-    public class Email : IEmail
+    public class EmailServico : IEmail
     {
         /// <summary>
         /// Envia e-mail

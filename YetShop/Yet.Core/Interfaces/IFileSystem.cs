@@ -5,8 +5,8 @@ namespace Yet.Core.Interfaces
     /// <summary>
     /// Tasks reponsáveis por manipular os arquivos
     /// </summary>
-    public interface IFileSystem
+    public interface IArquivo
     {
-        Task<bool> SavePicture(string pictureName, string pictureBase64);
+        Task<bool> SalvarImagem(string pictureName, string pictureBase64);
     }
 }

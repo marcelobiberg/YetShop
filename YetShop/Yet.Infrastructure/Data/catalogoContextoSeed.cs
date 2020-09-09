@@ -10,7 +10,7 @@ namespace Yet.Infrastructure.Data
     /// <summary>
     /// Seed do catálogo de produtos
     /// </summary>
-    public class catalogoContextoSeed
+    public class CatalogoContextoSeed
     {
         // Máximo de tentativas para popolar os objetos e salvar no banco de dados
         private const Int16 LIMITADOR_TENTATIVAS = 3;
@@ -58,7 +58,7 @@ namespace Yet.Infrastructure.Data
                     contadorDeTentativas++;
 
                     //. . Registra no log de LogError
-                    var log = loggerFactory.CreateLogger<catalogoContextoSeed>();
+                    var log = loggerFactory.CreateLogger<CatalogoContextoSeed>();
                     log.LogError(ex.Message);
 
                     //. . Recursivamente chama o método SeedAsync até o máximo de tentativas ( LIMITADOR_TENTATIVAS )

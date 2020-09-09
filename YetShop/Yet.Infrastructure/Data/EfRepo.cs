@@ -10,7 +10,7 @@ using Yet.Core.Interfaces;
 namespace Yet.Infrastructure.Data
 {
     /// <summary>
-    /// Entity framework padrão mas livremente alterável
+    /// Métodos padrões do Entity framework
     /// </summary>
     /// <typeparam name="T">T representa um objeto qualquer</typeparam>
     public class EfRepo<T> : IRepoAsync<T> where T : EntidadeBase

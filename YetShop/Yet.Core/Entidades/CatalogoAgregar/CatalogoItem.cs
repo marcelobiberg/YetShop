@@ -40,12 +40,12 @@ namespace Yet.Core.Entidades.CatalogoAgregar
 
         #region Métodos
         /// <summary>
-        /// Atualiza detalhes do catálago
+        /// Atualiza detalhes do item do catálago
         /// </summary>
         /// <param name="nome">Nome do item</param>
         /// <param name="descricao">Descrição do item</param>
         /// <param name="preco">Preço do item</param>
-        public void DetalhesUpdate(string nome, string descricao, decimal preco)
+        public void AtualizaDetalhes(string nome, string descricao, decimal preco)
         {
             Guard.Against.NullOrEmpty(nome, nameof(nome));
             Guard.Against.NullOrEmpty(descricao, nameof(descricao));
@@ -60,7 +60,7 @@ namespace Yet.Core.Entidades.CatalogoAgregar
         /// Atualiza detalhes do catálago
         /// </summary>
         /// <param name="catalogoMarcaId">ID da marca do catálago</param>
-        public void MarcaUpdate(int catalogoMarcaId)
+        public void AtualizaMarca(int catalogoMarcaId)
         {
             Guard.Against.Zero(catalogoMarcaId, nameof(catalogoMarcaId));
             CatalogoMarcaId = catalogoMarcaId;
@@ -70,7 +70,7 @@ namespace Yet.Core.Entidades.CatalogoAgregar
         /// Atualiza tipo do catálago
         /// </summary>
         /// <param name="catalogoTipoId">ID da tipo do catálago</param>
-        public void TipoUpdate(int catalogoTipoId)
+        public void AtualizaTipo(int catalogoTipoId)
         {
             Guard.Against.Zero(catalogoTipoId, nameof(catalogoTipoId));
             CatalogoTipoId = catalogoTipoId;
@@ -79,8 +79,8 @@ namespace Yet.Core.Entidades.CatalogoAgregar
         /// <summary>
         /// Atualiza URI da imagem do catá
         /// </summary>
-        /// <param name="imagemUri">URI da imagem doi catálogo</param>
-        public void ImagemUriUpdate(string imagemUri)
+        /// <param name="imagemUri">URI da imagem do item do catálogo</param>
+        public void AtualizaImagemUri(string imagemUri)
         {
             if (string.IsNullOrEmpty(imagemUri))
             {

@@ -17,15 +17,15 @@ namespace Yet.API.CatalogoItemEndpoints
     {
         #region Campos
         private readonly IRepoAsync<CatalogoItem> _catalogoItemRepo;
-        private readonly IFileSystem _webFileSystem;
+        private readonly IArquivo _arquivo;
         #endregion
 
         #region Ctor
         public Atualizar(IRepoAsync<CatalogoItem> itemRepo,
-            IFileSystem webFileSystem)
+            IArquivo arquivo)
         {
             _catalogoItemRepo = itemRepo;
-            _webFileSystem = webFileSystem;
+            _arquivo = arquivo;
 
         }
         #endregion
@@ -43,36 +43,36 @@ namespace Yet.API.CatalogoItemEndpoints
         {
             var response = new AtualizaCatalogoItemResponse(request.CorrelacaoId());
 
-            var existingItem = await _catalogoItemRepo.GetByIdAsync(request.Id);
+            var catalogoItem = await _catalogoItemRepo.GetByIdAsync(request.Id);
 
-            existingItem.DetalhesUpdate(request.Nome, request.Descricao, request.Preco);
-            existingItem.MarcaUpdate(request.CatalogMarcaId);
-            existingItem.TipoUpdate(request.CatalogTipoId);
+            catalogoItem.AtualizaDetalhes(request.Nome, request.Descricao, request.Preco);
+            catalogoItem.AtualizaMarca(request.CatalogMarcaId);
+            catalogoItem.AtualizaTipo(request.CatalogTipoId);
 
             if (string.IsNullOrEmpty(request.ImagemBase64) && string.IsNullOrEmpty(request.ImagemUri))
             {
-                existingItem.ImagemUriUpdate(string.Empty);
+                catalogoItem.AtualizaImagemUri(string.Empty);
             }
             else
             {
-                var picName = $"{existingItem.Id}{Path.GetExtension(request.ImagemNome)}";
-                if (await _webFileSystem.SavePicture($"{picName}", request.ImagemBase64))
+                var picName = $"{catalogoItem.Id}{Path.GetExtension(request.ImagemNome)}";
+                if (await _arquivo.SalvarImagem($"{picName}", request.ImagemBase64))
                 {
-                    existingItem.ImagemUriUpdate(picName);
+                    catalogoItem.AtualizaImagemUri(picName);
                 }
             }
 
-            await _catalogoItemRepo.UpdateAsync(existingItem);
+            await _catalogoItemRepo.UpdateAsync(catalogoItem);
 
             var dto = new CatalogoItemDto
             {
-                Id = existingItem.Id,
-                CatalogoMarcaId = existingItem.CatalogoMarcaId,
-                CatalogoTipoId = existingItem.CatalogoTipoId,
-                Descricao = existingItem.Descricao,
-                Nome = existingItem.Nome,
-                ImagemUri = existingItem.ImagemUri,
-                Preco = existingItem.Preco
+                Id = catalogoItem.Id,
+                CatalogoMarcaId = catalogoItem.CatalogoMarcaId,
+                CatalogoTipoId = catalogoItem.CatalogoTipoId,
+                Descricao = catalogoItem.Descricao,
+                Nome = catalogoItem.Nome,
+                ImagemUri = catalogoItem.ImagemUri,
+                Preco = catalogoItem.Preco
             };
             response.CatalogoItem = dto;
             return response;

@@ -14,14 +14,14 @@ using System;
 using System.Globalization;
 using System.Text;
 using Yet.API.Helpers;
-using Yet.Core;
+using Yet.Core.Configuracoes;
 using Yet.Core.Constantes;
 using Yet.Core.Entidades.CatalogoAgregar;
 using Yet.Core.Interfaces;
 using Yet.Infrastructure.Data;
 using Yet.Infrastructure.Identity;
-using Yet.Infrastructure.Logging;
-using Yet.Infrastructure.Services;
+using Yet.Infrastructure.Log;
+using Yet.Infrastructure.Servicos;
 
 namespace Yet.API
 {
@@ -81,13 +81,13 @@ namespace Yet.API
 
             // Adicionas o serviços da aplicação
             services.AddScoped(typeof(IRepoAsync<>), typeof(EfRepo<>));
-            services.Configure<CatalogoSettings>(_configuration);
+            services.Configure<CatalogoConfigs>(_configuration);
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
-            services.AddScoped<ITokenServico, IdentityTokenClaimService>();
+            services.AddScoped<ITokenServico, AutenticacaoTokenServico>();
 
             var baseUrlConfig = new BaseUrlConfiguration();
             _configuration.Bind(BaseUrlConfiguration.CONFIG_NAME, baseUrlConfig);
-            services.AddScoped<IFileSystem, WebFileSystem>(x => new WebFileSystem($"{baseUrlConfig.WebBase}File"));
+            services.AddScoped<IArquivo, ArquivoServico>(x => new ArquivoServico($"{baseUrlConfig.WebBase}File"));
 
             services.AddMemoryCache();
 

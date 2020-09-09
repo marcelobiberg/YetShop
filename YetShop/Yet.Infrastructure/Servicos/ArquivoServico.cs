@@ -7,22 +7,27 @@ using System.Threading.Tasks;
 using Yet.Core.Interfaces;
 using Yet.Infrastructure.Data;
 
-namespace Yet.Infrastructure.Services
+namespace Yet.Infrastructure.Servicos
 {
-    public class WebFileSystem : IFileSystem
+    public class ArquivoServico : IArquivo
     {
+        #region Campos
         private readonly HttpClient _httpClient;
         private readonly string _url;
         public const string AUTH_KEY = "AuthKeyOfDoomThatMustBeAMinimumNumberOfBytes";
+        #endregion
 
-        public WebFileSystem(string url)
+        #region Ctor
+        public ArquivoServico(string url)
         {
             _url = url;
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Add("auth-key", AUTH_KEY);
         }
+        #endregion
 
-        public async Task<bool> SavePicture(string pictureName, string pictureBase64)
+        #region Métodos
+        public async Task<bool> SalvarImagem(string pictureName, string pictureBase64)
         {
             if (string.IsNullOrEmpty(pictureBase64) || !await UploadFile(pictureName, Convert.FromBase64String(pictureBase64)))
             {
@@ -46,8 +51,8 @@ namespace Yet.Infrastructure.Services
         {
             var request = new ArquivoItem
             {
-                DataBase64 = Convert.ToBase64String(fileData),
-                FileName = fileName
+                ArquivoNaBase64 = Convert.ToBase64String(fileData),
+                ArquivoNome = fileName
             };
             var content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
 
@@ -59,8 +64,10 @@ namespace Yet.Infrastructure.Services
 
             return true;
         }
+        #endregion
     }
 
+    #region Helpers
     public static class ImageValidators
     {
         private const int ImageMaximumBytes = 512000;
@@ -80,4 +87,5 @@ namespace Yet.Infrastructure.Services
                    string.Equals(extension, ".jpeg", StringComparison.OrdinalIgnoreCase);
         }
     }
+    #endregion
 }

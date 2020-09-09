@@ -2,11 +2,11 @@
 {
     public class ArquivoItem
     {
-        public string FileName { get; set; }
+        public string ArquivoNome { get; set; }
         public string Url { get; set; }
-        public long Size { get; set; }
-        public string Ext { get; set; }
-        public string Type { get; set; }
-        public string DataBase64 { get; set; }
+        public long Tamanho { get; set; }
+        public string Extensao { get; set; }
+        public string Tipo { get; set; }
+        public string ArquivoNaBase64 { get; set; }
     }
 }

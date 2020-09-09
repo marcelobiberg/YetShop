@@ -17,14 +17,14 @@ namespace Yet.API.CatalogoItemEndpoints
     {
         #region Campos
         private readonly IRepoAsync<CatalogoItem> _itemRepo;
-        private readonly IFileSystem _webFileSystem;
+        private readonly IArquivo _arquivo;
         #endregion
 
         #region Ctor
-        public Adicionar(IRepoAsync<CatalogoItem> itemRepo, IFileSystem webFileSystem)
+        public Adicionar(IRepoAsync<CatalogoItem> itemRepo, IArquivo arquivo)
         {
             _itemRepo = itemRepo;
-            _webFileSystem = webFileSystem;
+            _arquivo = arquivo;
         }
         #endregion
 
@@ -53,9 +53,9 @@ namespace Yet.API.CatalogoItemEndpoints
             if (newItem.Id != 0)
             {
                 var picName = $"{newItem.Id}{Path.GetExtension(request.ImagemNome)}";
-                if (await _webFileSystem.SavePicture(picName, request.ImagemBase64))
+                if (await _arquivo.SalvarImagem(picName, request.ImagemBase64))
                 {
-                    newItem.ImagemUriUpdate(picName);
+                    newItem.AtualizaImagemUri(picName);
                     await _itemRepo.UpdateAsync(newItem);
                 }
             }
