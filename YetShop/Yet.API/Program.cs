@@ -23,8 +23,9 @@ namespace Yet.API
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 try
                 {
+                    // Instancia o serviço para o contexto do catálogo
                     var catalogoContext = services.GetRequiredService<CatalogoContexto>();
-                    await catalogoContextoSeed.SeedAsync(catalogoContext, loggerFactory);
+                    await CatalogoContextoSeed.SeedAsync(catalogoContext, loggerFactory);
 
                     var userManager = services.GetRequiredService<UserManager<UsuarioApp>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
