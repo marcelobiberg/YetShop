@@ -14,13 +14,12 @@ using System;
 using System.Globalization;
 using System.Text;
 using Yet.API.Helpers;
-using Yet.Core.Configuracoes;
 using Yet.Core.Constantes;
 using Yet.Core.Entidades.CatalogoAgregar;
 using Yet.Core.Interfaces;
 using Yet.Infrastructure.Data;
 using Yet.Infrastructure.Identity;
-using Yet.Infrastructure.Log;
+using Yet.Infrastructure.Logging;
 using Yet.Infrastructure.Servicos;
 
 namespace Yet.API
@@ -37,6 +36,7 @@ namespace Yet.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+
             var cultureInfo = new CultureInfo("pt-BR");
             cultureInfo.NumberFormat.CurrencySymbol = "R$";
 
@@ -81,7 +81,7 @@ namespace Yet.API
 
             // Adicionas o serviços da aplicação
             services.AddScoped(typeof(IRepoAsync<>), typeof(EfRepo<>));
-            services.Configure<CatalogoConfigs>(_configuration);
+            //services.Configure<CatalogoConfigs>(_configuration);
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
             services.AddScoped<ITokenServico, AutenticacaoTokenServico>();
 

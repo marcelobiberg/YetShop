@@ -1,17 +1,20 @@
 ﻿using Ardalis.ApiEndpoints;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Yet.Core.Interfaces;
-using Yet.Core.Especificacoes;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Linq;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Yet.Core.Entidades.CatalogoAgregar;
+using Yet.Core.Especificacoes;
+using Yet.Core.Interfaces;
 
 namespace Yet.API.CatalogoItemEndpoints
 {
+    [AllowAnonymous]
     public class ListaPaginada : BaseAsyncEndpoint<ListaPaginadaCatalogoItemRequest, ListaPaginadaCatalogoItemResponse>
     {
         #region Campos
@@ -29,14 +32,14 @@ namespace Yet.API.CatalogoItemEndpoints
         #endregion
 
         #region Métodos
-        [HttpGet("api/catalogo-itens")]
+        [HttpGet("api/catalogo-itens-paginado")]
         [SwaggerOperation(
             Summary = "Lista paginada com itens do catálogo",
             Description = "Lista paginada ( CatalogoItens )",
             OperationId = "catalogo-itens.ListPaged",
             Tags = new[] { "CatalogoItemEndpoints" })
         ]
-        public override async Task<ActionResult<ListaPaginadaCatalogoItemResponse>> HandleAsync([FromQuery] ListaPaginadaCatalogoItemRequest request, 
+        public override async Task<ActionResult<ListaPaginadaCatalogoItemResponse>> HandleAsync([FromQuery] ListaPaginadaCatalogoItemRequest request,
             CancellationToken cancellationToken)
         {
             var response = new ListaPaginadaCatalogoItemResponse(request.CorrelacaoId());
@@ -45,8 +48,8 @@ namespace Yet.API.CatalogoItemEndpoints
             int totalItems = await _itemRepo.CountAsync(filterSpec);
 
             var pagedSpec = new CatalogoFiltroPaginacaoQuery(
-                skip: request.PageIndex * request.PageSize,
-                take: request.PageSize,
+                skip: request.IndicePagina * request.TamanhoPagina,
+                take: request.TamanhoPagina,
                 marcaId: request.CatalogoMarcaId,
                 tipoId: request.CatalogoTipoId);
 
@@ -57,10 +60,9 @@ namespace Yet.API.CatalogoItemEndpoints
             {
                 //TODO: analisar o code abaixo  . . talvez se faça necessário utilizar a classe Uri composer
                 //item.PictureUri = _uriComposer.ComposePicUri(item.PictureUri);
-
                 item.ImagemUri = item.ImagemUri;
             }
-            response.PageCount = int.Parse(Math.Ceiling((decimal)totalItems / request.PageSize).ToString());
+            response.ContadorPagina = int.Parse(Math.Ceiling((decimal)totalItems / request.TamanhoPagina).ToString());
 
             return Ok(response);
         }

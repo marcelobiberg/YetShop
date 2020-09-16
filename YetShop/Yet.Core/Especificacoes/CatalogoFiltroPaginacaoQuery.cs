@@ -5,7 +5,7 @@ namespace Yet.Core.Especificacoes
 {
     public class CatalogoFiltroPaginacaoQuery : Specification<CatalogoItem>
     {
-        public CatalogoFiltroPaginacaoQuery(int skip, int take, int? marcaId, int? tipoId)
+        public CatalogoFiltroPaginacaoQuery(int skip, int take, uint? marcaId, uint? tipoId)
             : base()
         {
             Query

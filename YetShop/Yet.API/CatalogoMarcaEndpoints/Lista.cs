@@ -1,13 +1,12 @@
 ﻿using Ardalis.ApiEndpoints;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Yet.Core.Entidades;
-using Yet.Core.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Yet.Core.Entidades.CatalogoAgregar;
+using Yet.Core.Interfaces;
 
 namespace Yet.API.CatalogoMarcaEndpoints
 {
@@ -28,12 +27,12 @@ namespace Yet.API.CatalogoMarcaEndpoints
         #endregion
 
         #region Métodos
-        [HttpGet("api/catalog-brands")]
+        [HttpGet("api/catalogo-marcas")]
         [SwaggerOperation(
-            Summary = "List Catalog Brands",
-            Description = "List Catalog Brands",
-            OperationId = "catalog-brands.List",
-            Tags = new[] { "CatalogBrandEndpoints" })
+            Summary = "Lista de marcas do catálogo",
+            Description = "Lista as marcas do catálogo",
+            OperationId = "catalogo-marcas.List",
+            Tags = new[] { "CatalogMarcaEndpoints" })
         ]
         public override async Task<ActionResult<ListaCatalogoMarcasResponse>> HandleAsync(CancellationToken cancellationToken)
         {

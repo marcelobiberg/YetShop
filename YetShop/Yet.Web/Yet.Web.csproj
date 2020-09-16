@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas/Admin/" />
+    <Folder Include="Areas/Site/Models/" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="wwwroot\css\site" />
+    <Folder Include="wwwroot\js\site" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="Refit" Version="5.2.1" />
+  </ItemGroup>
+</Project>
