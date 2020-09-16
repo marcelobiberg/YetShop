@@ -82,7 +82,7 @@ namespace Yet.API
 
             // Adicionas o serviços da aplicação
             services.AddScoped(typeof(IRepoAsync<>), typeof(EfRepo<>));
-            services.Configure<CatalogoConfigs>(_configuration);
+            //services.Configure<CatalogoConfigs>(_configuration);
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
             services.AddScoped<ITokenServico, AutenticacaoTokenServico>();
 

@@ -28,12 +28,12 @@ namespace Yet.API.CatalogoMarcaEndpoints
         #endregion
 
         #region Métodos
-        [HttpGet("api/catalog-brands")]
+        [HttpGet("api/catalogo-marcas")]
         [SwaggerOperation(
-            Summary = "List Catalog Brands",
-            Description = "List Catalog Brands",
-            OperationId = "catalog-brands.List",
-            Tags = new[] { "CatalogBrandEndpoints" })
+            Summary = "Lista de marcas do catálogo",
+            Description = "Lista as marcas do catálogo",
+            OperationId = "catalogo-marcas.List",
+            Tags = new[] { "CatalogMarcaEndpoints" })
         ]
         public override async Task<ActionResult<ListaCatalogoMarcasResponse>> HandleAsync(CancellationToken cancellationToken)
         {

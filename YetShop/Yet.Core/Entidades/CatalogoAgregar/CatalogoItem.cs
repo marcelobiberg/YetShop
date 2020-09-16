@@ -9,14 +9,14 @@ namespace Yet.Core.Entidades.CatalogoAgregar
     public class CatalogoItem : EntidadeBase
     {
         #region Campos
-        public string Nome { get; private set; }
-        public string Descricao { get; private set; }
-        public decimal Preco { get; private set; }
-        public string ImagemUri { get; private set; }
-        public int CatalogoTipoId { get; private set; }
-        public CatalogoTipo CatalogoTipo { get; private set; }
-        public int CatalogoMarcaId { get; private set; }
-        public CatalogoMarca CatalogoMarca { get; private set; }
+        public string Nome { get; set; }
+        public string Descricao { get; set; }
+        public decimal Preco { get; set; }
+        public string ImagemUri { get; set; }
+        public int CatalogoTipoId { get; set; }
+        public CatalogoTipo CatalogoTipo { get; set; }
+        public int CatalogoMarcaId { get; set; }
+        public CatalogoMarca CatalogoMarca { get; set; }
         #endregion
 
         #region Ctor

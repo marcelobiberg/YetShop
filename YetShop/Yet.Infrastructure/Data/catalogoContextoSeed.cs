@@ -64,7 +64,7 @@ namespace Yet.Infrastructure.Data
                     //. . Recursivamente chama o método SeedAsync até o máximo de tentativas ( LIMITADOR_TENTATIVAS )
                     await SeedAsync(catalogoContexto, loggerFactory, contadorDeTentativas);
                 }
-                throw;
+                throw new Exception("Erro ao adicionar a 'Seed' CatalogoContextoSeed: " + ex.Message);
             }
         }
 
