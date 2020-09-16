@@ -3,9 +3,6 @@ using System;
 
 namespace Yet.Core.Entidades.CatalogoAgregar
 {
-    /// <summary>
-    /// Objeto responsável pela manipulação dos itens do catálago
-    /// </summary>
     public class CatalogoItem : EntidadeBase
     {
         #region Campos
@@ -77,7 +74,7 @@ namespace Yet.Core.Entidades.CatalogoAgregar
         }
 
         /// <summary>
-        /// Atualiza URI da imagem do catá
+        /// Atualiza URI da imagem do catálogo
         /// </summary>
         /// <param name="imagemUri">URI da imagem do item do catálogo</param>
         public void AtualizaImagemUri(string imagemUri)

@@ -1,13 +1,12 @@
 ﻿using Ardalis.ApiEndpoints;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Yet.Core.Entidades;
-using Yet.Core.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Yet.Core.Entidades.CatalogoAgregar;
+using Yet.Core.Interfaces;
 
 namespace Yet.API.CatalogoMarcaEndpoints
 {

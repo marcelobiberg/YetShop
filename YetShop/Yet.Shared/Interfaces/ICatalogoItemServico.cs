@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Yet.Shared.Models;
-using Yet.Shared.Models;
 
 namespace Yet.Shared.Interfaces
 {
