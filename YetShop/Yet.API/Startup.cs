@@ -19,7 +19,7 @@ using Yet.Core.Entidades.CatalogoAgregar;
 using Yet.Core.Interfaces;
 using Yet.Infrastructure.Data;
 using Yet.Infrastructure.Identity;
-using Yet.Infrastructure.Log;
+using Yet.Infrastructure.Logging;
 using Yet.Infrastructure.Servicos;
 
 namespace Yet.API
