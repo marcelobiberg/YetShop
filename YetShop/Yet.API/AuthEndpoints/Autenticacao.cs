@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Threading;
 using System.Threading.Tasks;
-using Yet.Infrastructure.Identity;
 using Yet.Core.Interfaces;
+using Yet.Infrastructure.Identity;
 
 namespace Yet.API.AuthEndpoints
 {

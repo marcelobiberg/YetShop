@@ -2,6 +2,6 @@
 {
     public static class Paginacao
     {
-        public const short ITENS_POR_PAGINA = 10;
+        public const int ITENS_POR_PAGINA = 10;
     }
 }

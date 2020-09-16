@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Yet.Shared.Interfaces;
-using Yet.Shared.Servicos;
+using Yet.Web.Interfaces;
+using Yet.Web.Servicos;
 
 namespace Yet.Web
 {
@@ -22,7 +22,7 @@ namespace Yet.Web
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
 
-            services.AddScoped<ICatalogoItemServico, CatalogoItemServico>();
+            services.AddScoped<ICatalogoServico, CatalogoServico>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -43,7 +43,7 @@ namespace Yet.Web
                 endpoints.MapAreaControllerRoute(
                     name: "Site",
                     areaName: "Site",
-                    pattern: "{area:exists}/{controller=Site}/{action=ListaCatalogoItens}/{id?}");
+                    pattern: "{area:exists}/{controller=Site}/{action=Catalogo}/{id?}");
 
                 endpoints.MapAreaControllerRoute(
                     name: "Admin",

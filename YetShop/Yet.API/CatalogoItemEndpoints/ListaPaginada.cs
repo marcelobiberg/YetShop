@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Linq;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Yet.Core.Entidades.CatalogoAgregar;
@@ -59,7 +60,6 @@ namespace Yet.API.CatalogoItemEndpoints
             {
                 //TODO: analisar o code abaixo  . . talvez se faça necessário utilizar a classe Uri composer
                 //item.PictureUri = _uriComposer.ComposePicUri(item.PictureUri);
-
                 item.ImagemUri = item.ImagemUri;
             }
             response.ContadorPagina = int.Parse(Math.Ceiling((decimal)totalItems / request.TamanhoPagina).ToString());

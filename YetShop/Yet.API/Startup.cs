@@ -14,7 +14,6 @@ using System;
 using System.Globalization;
 using System.Text;
 using Yet.API.Helpers;
-using Yet.Core.Configuracoes;
 using Yet.Core.Constantes;
 using Yet.Core.Entidades.CatalogoAgregar;
 using Yet.Core.Interfaces;

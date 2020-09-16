@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
 using System.Threading.Tasks;
 using Yet.Core.Constantes;
 
@@ -16,7 +15,7 @@ namespace Yet.Infrastructure.Identity
         /// </summary>
         /// <param name="userManager">Objeto responsável por manipular o usuário</param>
         /// <param name="roleManager">Objeto responsável por manipular o perfil do usuário</param>
-        public static async Task SeedAsync(UserManager<UsuarioApp> userManager, 
+        public static async Task SeedAsync(UserManager<UsuarioApp> userManager,
             RoleManager<IdentityRole> roleManager)
         {
             var user = userManager.FindByEmailAsync(Autenticacao.EMAIL_ADMINISTRADOR).Result;
@@ -34,7 +33,7 @@ namespace Yet.Infrastructure.Identity
                 await userManager.AddToRoleAsync(adminUser, Autenticacao.PERFIL_ADMINISTRADOR);
             }
 
-   
+
         }
     }
 }

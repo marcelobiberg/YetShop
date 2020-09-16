@@ -1,10 +1,10 @@
-﻿using System.Threading;
-using Ardalis.ApiEndpoints;
+﻿using Ardalis.ApiEndpoints;
 using Microsoft.AspNetCore.Mvc;
-using Yet.Core.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Threading;
 using System.Threading.Tasks;
 using Yet.Core.Entidades.CatalogoAgregar;
+using Yet.Core.Interfaces;
 
 namespace Yet.API.CatalogoItemEndpoints
 {

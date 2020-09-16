@@ -1,4 +1,4 @@
-﻿@model ListaCatalogoItensViewModel
+﻿@model CatalogoViewModel
 
 <div class="container">
     <!--Filtros-->
@@ -27,7 +27,7 @@
 
     <!--Lista catálogo itens-->
     <div class="shop-product-wrap grid with-pagination row">
-        @foreach (var Item in Model.CatalogoItens)
+        @foreach (var Item in Model.Itens)
         {
             <div class="col-lg-3 col-md-4 col-sm-6 mb-30">
                 <partial name="_Item" for="@Item" />

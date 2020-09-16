@@ -102,6 +102,11 @@ h6 {
   font-weight: 500;
 }
 
+.is-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 .card {
   border: none;
   border-radius: 0;
