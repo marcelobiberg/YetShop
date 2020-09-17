@@ -2,6 +2,7 @@
 
 namespace Yet.Core.Extensoes
 {
+    //:TODO: implementar o Refit
     public static class JsonExtensions
     {
         private static readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions

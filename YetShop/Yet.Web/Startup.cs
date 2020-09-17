@@ -43,7 +43,7 @@ namespace Yet.Web
                 endpoints.MapAreaControllerRoute(
                     name: "Site",
                     areaName: "Site",
-                    pattern: "{area:exists}/{controller=Site}/{action=Catalogo}/{id?}");
+                    pattern: "{area:exists}/{controller=Catalogo}/{action=Index}/{id?}");
 
                 endpoints.MapAreaControllerRoute(
                     name: "Admin",

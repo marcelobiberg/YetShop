@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Linq;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Yet.Core.Dto.Catalogo;
 using Yet.Core.Entidades.CatalogoAgregar;
 using Yet.Core.Especificacoes;
 using Yet.Core.Interfaces;
@@ -18,15 +18,21 @@ namespace Yet.API.CatalogoItemEndpoints
     public class ListaPaginada : BaseAsyncEndpoint<ListaPaginadaCatalogoItemRequest, ListaPaginadaCatalogoItemResponse>
     {
         #region Campos
-        private readonly IRepoAsync<CatalogoItem> _itemRepo;
+        private readonly IRepoAsync<CatalogoItem> _catalogoItemRepo;
+        private readonly IRepoAsync<CatalogoTipo> _catalogoTipoRepo;
+        private readonly IRepoAsync<CatalogoMarca> _catalogoMarcaRepo;
         private readonly IMapper _mapper;
         #endregion
 
         #region Ctor
-        public ListaPaginada(IRepoAsync<CatalogoItem> itemRepo,
+        public ListaPaginada(IRepoAsync<CatalogoItem> catalogoItem,
+            IRepoAsync<CatalogoMarca> catalogoMarca,
+            IRepoAsync<CatalogoTipo> catalogoTipo,
             IMapper mapper)
         {
-            _itemRepo = itemRepo;
+            _catalogoItemRepo = catalogoItem;
+            _catalogoMarcaRepo = catalogoMarca;
+            _catalogoTipoRepo = catalogoTipo;
             _mapper = mapper;
         }
         #endregion
@@ -45,7 +51,7 @@ namespace Yet.API.CatalogoItemEndpoints
             var response = new ListaPaginadaCatalogoItemResponse(request.CorrelacaoId());
 
             var filterSpec = new CatalogoFiltroQuery(request.CatalogoMarcaId, request.CatalogoTipoId);
-            int totalItems = await _itemRepo.CountAsync(filterSpec);
+            int totalItems = await _catalogoItemRepo.CountAsync(filterSpec);
 
             var pagedSpec = new CatalogoFiltroPaginacaoQuery(
                 skip: request.IndicePagina * request.TamanhoPagina,
@@ -53,7 +59,7 @@ namespace Yet.API.CatalogoItemEndpoints
                 marcaId: request.CatalogoMarcaId,
                 tipoId: request.CatalogoTipoId);
 
-            var items = await _itemRepo.ListAsync(pagedSpec);
+            var items = await _catalogoItemRepo.ListAsync(pagedSpec);
 
             response.CatalogoItens.AddRange(items.Select(_mapper.Map<CatalogoItemDto>));
             foreach (CatalogoItemDto item in response.CatalogoItens)
@@ -62,6 +68,13 @@ namespace Yet.API.CatalogoItemEndpoints
                 //item.PictureUri = _uriComposer.ComposePicUri(item.PictureUri);
                 item.ImagemUri = item.ImagemUri;
             }
+
+            var marcas = await _catalogoMarcaRepo.ListAllAsync();
+            var tipos = await _catalogoTipoRepo.ListAllAsync();
+
+            response.CatalogoMarcas.AddRange(marcas.Select(_mapper.Map<CatalogoMarcaDto>));
+            response.CatalogoTipos.AddRange(tipos.Select(_mapper.Map<CatalogoTipoDto>));
+
             response.ContadorPagina = int.Parse(Math.Ceiling((decimal)totalItems / request.TamanhoPagina).ToString());
 
             return Ok(response);

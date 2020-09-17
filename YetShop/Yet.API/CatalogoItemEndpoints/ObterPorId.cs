@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Threading;
 using System.Threading.Tasks;
+using Yet.Core.Dto.Catalogo;
 using Yet.Core.Entidades.CatalogoAgregar;
 using Yet.Core.Interfaces;
 

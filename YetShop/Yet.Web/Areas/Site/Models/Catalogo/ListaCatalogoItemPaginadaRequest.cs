@@ -1,4 +1,4 @@
-﻿namespace Yet.Web.Models
+﻿namespace Yet.Web.Areas.Site.Models.Catalogo
 {
     public class ListaCatalogoItemPaginadaRequest
     {

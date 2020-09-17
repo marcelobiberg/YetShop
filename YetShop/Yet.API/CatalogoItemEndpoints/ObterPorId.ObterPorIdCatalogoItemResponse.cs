@@ -1,5 +1,6 @@
 ﻿using System;
 using Yet.API.TratamentoBase;
+using Yet.Core.Dto.Catalogo;
 
 namespace Yet.API.CatalogoItemEndpoints
 {

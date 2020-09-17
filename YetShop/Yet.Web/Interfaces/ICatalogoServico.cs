@@ -1,6 +1,6 @@
 ﻿using Refit;
 using System.Threading.Tasks;
-using Yet.Web.Models;
+using Yet.Web.Areas.Site.Models.Catalogo;
 
 namespace Yet.Web.Interfaces
 {

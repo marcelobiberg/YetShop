@@ -5,12 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="bundleconfig.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Areas/Admin/" />
-    <Folder Include="Areas/Site/Models/" />
   </ItemGroup>
   
   <ItemGroup>

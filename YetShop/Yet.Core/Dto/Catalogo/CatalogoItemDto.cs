@@ -1,4 +1,4 @@
-﻿namespace Yet.Web.Models
+﻿namespace Yet.Core.Dto.Catalogo
 {
     public class CatalogoItemDto
     {

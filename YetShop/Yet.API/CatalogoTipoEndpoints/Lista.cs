@@ -5,6 +5,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Yet.Core.Dto.Catalogo;
 using Yet.Core.Entidades.CatalogoAgregar;
 using Yet.Core.Interfaces;
 

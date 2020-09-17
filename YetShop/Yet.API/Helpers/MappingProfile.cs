@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using Yet.API.CatalogoItemEndpoints;
-using Yet.API.CatalogoMarcaEndpoints;
-using Yet.API.CatalogoTipoEndpoints;
+using Yet.Core.Dto.Catalogo;
 using Yet.Core.Entidades.CatalogoAgregar;
 
 namespace Yet.API.Helpers

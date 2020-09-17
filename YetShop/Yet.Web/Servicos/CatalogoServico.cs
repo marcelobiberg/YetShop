@@ -1,7 +1,7 @@
 ﻿using Refit;
 using System.Threading.Tasks;
+using Yet.Web.Areas.Site.Models.Catalogo;
 using Yet.Web.Interfaces;
-using Yet.Web.Models;
 
 namespace Yet.Web.Servicos
 {

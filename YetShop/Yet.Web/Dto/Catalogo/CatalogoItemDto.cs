@@ -1,4 +1,4 @@
-﻿namespace Yet.API.CatalogoItemEndpoints
+﻿namespace Yet.Web.Dto.Catalogo
 {
     public class CatalogoItemDto
     {

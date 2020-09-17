@@ -4,7 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <!-- Referencia o projeto Yet.Core & Yet.Infrastructure-->
+  <!-- DDD Comment -->
+  <!-- Ambos projetos compartilha das bibliotecas Yet.Infrastructure e Yet.Core, evitando código duplicado -->
   <ItemGroup>
     <ProjectReference Include="..\Yet.Core\Yet.Core.csproj" />
     <ProjectReference Include="..\Yet.Infrastructure\Yet.Infrastructure.csproj" />

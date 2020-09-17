@@ -1,4 +1,4 @@
-﻿namespace Yet.Web.ViewModels
+﻿namespace Yet.Web.ViewModels.Catalogo
 {
     public class CatalogoItemViewModel
     {
