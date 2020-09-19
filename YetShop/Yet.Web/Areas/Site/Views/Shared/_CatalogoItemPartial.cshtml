@@ -9,9 +9,14 @@
                 <img src="@Model.ImagemUri" alt="">
             </a>
             <div class="hover-btns">
-                <a href="wishlist-light.html" class="single-btn"><i class="ion-md-heart-empty"></i></a>
-                <a href="compare-light.html" class="single-btn"><i class="ion-md-options"></i></a>
-                <a href="#" class="single-btn" role="button" data-toggle="modal" data-target="#quick-view"><i class="ion-md-open"></i></a>
+                <a href="wishlist-light.html" class="single-btn" title="Adicionar a lista de desejos"><i class="ion-md-heart-empty"></i></a>
+
+                <!--Anchor trigger para o modal-->
+                <a class="single-btn popup"
+                   data-url="@Url.Action("CatalogoItemDetalhesModal", "Catalogo", new { catalogoItemId = Model.Id})"
+                   data-toggle="modal"
+                   data-target="#modal-catalogo-item"
+                   title="Ver detalhes"><i class="ion-md-open"></i></a>
             </div>
         </div>
         <span class="product-badge badge--sell-green"></span>
@@ -23,13 +28,10 @@
         </h3>
 
         <div class="product__price">
-            <span class="price--new">@Model.Preco.ToString("N2")</span>
+            <span class="price--new">R$ @Model.Preco.ToString("N2")</span>
         </div>
         <p class="product-info-para">
-           @Model.Descricao
-        </p>
-        <p class="product-info-para">
-
+            @Model.Descricao
         </p>
         <div class="product__btn">
             <a href="cart-light.html" class="theme-btn-outlined--type-2">Adicionar ao carrinho</a>

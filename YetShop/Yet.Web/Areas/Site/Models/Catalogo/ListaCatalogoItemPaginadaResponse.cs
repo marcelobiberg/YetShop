@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Yet.Web.Dto.Catalogo;
 
 namespace Yet.Web.Areas.Site.Models.Catalogo

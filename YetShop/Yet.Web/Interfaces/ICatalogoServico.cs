@@ -8,5 +8,8 @@ namespace Yet.Web.Interfaces
     {
         [Get("/api/catalogo-itens-paginado")]
         Task<ListaCatalogoItemPaginadaResponse> ListaPaginada(ListaCatalogoItemPaginadaRequest request);
+
+        [Get("/api/catalogo-item/{CatalogoItemId}")]
+        Task<ObterCatalogoItemPorIdResponse> ObterCatalogoItemPorId(int CatalogoItemId);
     }
 }

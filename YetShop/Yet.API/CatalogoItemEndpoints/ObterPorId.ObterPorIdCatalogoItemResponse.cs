@@ -13,6 +13,8 @@ namespace Yet.API.CatalogoItemEndpoints
 
         #region Campos
         public CatalogoItemDto CatalogoItem { get; set; }
+        public string CatalogoMarcaNome { get; set; }
+        public string CatalogoTipoNome { get; set; }
         #endregion
     }
 }

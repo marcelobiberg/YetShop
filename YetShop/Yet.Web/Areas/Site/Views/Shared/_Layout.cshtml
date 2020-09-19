@@ -13,7 +13,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <title>Yet Shop</title>
 </head>
-<body class="light-version color-chocolate">
+<body class="light-version color-red">
     <div class="site-wrapper">
         <header class="site-header initial-static header-1">
             <div class="container-fluid">
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="single-option">
                                 <button class="cart-btn single-option_icon slide-down--btn"><i class="icon ion-md-cart"></i> <span class="item-count">1</span></button>
                                 <div class="slide-down--item">
@@ -128,7 +128,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-5">
                             <div class="newsletter-details">
-                                <h3>Faça parte da Newsletter</h3>
+                                <h3>Newsletter</h3>
                                 <h6>Receba via e-mail sobre nossos lançamentos e ofertas.</h6>
                             </div>
                         </div>
@@ -165,5 +165,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site/plugins.min.js"></script>
     <script src="~/js/site/custom.js"></script>
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

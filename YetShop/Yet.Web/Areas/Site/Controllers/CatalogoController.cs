@@ -31,6 +31,7 @@ namespace Yet.Web.Areas.Site.Controllers
         }
         #endregion
 
+        #region Métodos
         [HttpGet]
         public async Task<ActionResult<CatalogoViewModel>> Index(byte indicePagina,
             uint? marcaFiltroSelecionado,
@@ -74,6 +75,27 @@ namespace Yet.Web.Areas.Site.Controllers
 
             return View(vm);
         }
+
+        [HttpGet]
+        public async Task<ActionResult> CatalogoItemDetalhesModal(int catalogoItemId)
+        {
+            _logger.LogInformation("Buscando item do catálogo 'CatalogoItemDto' na API");
+            var response = await _CatalogoServico.ObterCatalogoItemPorId(catalogoItemId);
+
+            var vm = new ModalCatalogoItemViewModel
+            {
+                Nome = response.CatalogoItem.Nome,
+                Id = response.CatalogoItem.Id,
+                Descricao = response.CatalogoItem.Descricao,
+                ImagemUri = response.CatalogoItem.ImagemUri,
+                Preco = response.CatalogoItem.Preco,
+                MarcaNome = response.CatalogoMarcaNome,
+                TipoNome = response.CatalogoTipoNome
+            };
+
+            return PartialView("_ModalCatalogoItemDetalhes", vm);
+        }
+        #endregion
 
         #region Combo Helpers
         public static IEnumerable<SelectListItem> ComboCatalogoMarcas(IEnumerable<CatalogoMarcaDto> marcas)

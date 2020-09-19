@@ -1,4 +1,6 @@
-﻿namespace Yet.Web.Dto.Catalogo
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Yet.Web.Dto.Catalogo
 {
     public class CatalogoItemDto
     {
