@@ -3,12 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas/Admin/" />
-  </ItemGroup>
   
   <ItemGroup>
+    <Folder Include="Models\AreaCliente\" />
     <Folder Include="wwwroot\css\site" />
     <Folder Include="wwwroot\js\site" />
   </ItemGroup>
@@ -20,5 +17,12 @@
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
     <PackageReference Include="Refit" Version="5.2.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Update="Views\_ViewImports.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 </Project>

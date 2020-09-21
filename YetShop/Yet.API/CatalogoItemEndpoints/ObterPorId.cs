@@ -1,10 +1,10 @@
 ﻿using Ardalis.ApiEndpoints;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using System.Threading.Tasks;
 using Yet.Core.Dto.Catalogo;
-using Yet.Core.Entidades.CatalogoAgregar;
 using Yet.Core.Interfaces;
 
 namespace Yet.API.CatalogoItemEndpoints
@@ -12,19 +12,13 @@ namespace Yet.API.CatalogoItemEndpoints
     public class ObterPorId : BaseAsyncEndpoint<ObterPorIdCatalogoItemRequest, ObterPorIdCatalogoItemResponse>
     {
         #region Campos
-        private readonly IRepoAsync<CatalogoItem> _catalogoItemRepo;
-        private readonly IRepoAsync<CatalogoMarca> _catalogoItemMarcaRepo;
-        private readonly IRepoAsync<CatalogoTipo> _catalogoItemTipoRepo;
+        private readonly ICatalogoRepo _catalogoRepo;
         #endregion
 
         #region Ctor
-        public ObterPorId(IRepoAsync<CatalogoItem> itemRepo,
-            IRepoAsync<CatalogoMarca> catalogoMarca,
-            IRepoAsync<CatalogoTipo> catalogoTipo)
+        public ObterPorId(ICatalogoRepo catalogoRepo)
         {
-            _catalogoItemRepo = itemRepo;
-            _catalogoItemMarcaRepo = catalogoMarca;
-            _catalogoItemTipoRepo = catalogoTipo;
+            _catalogoRepo = catalogoRepo;
         }
         #endregion
 
@@ -49,20 +43,12 @@ namespace Yet.API.CatalogoItemEndpoints
             var response = new ObterPorIdCatalogoItemResponse(request.CorrelacaoId());
 
             // Busca no repositório os itens do catálogo, catálogo marcas e catálogo tipos ( categorias ) 
-            var catalogoItem = await _catalogoItemRepo.
-                GetByIdAsync(request.CatalogoItemId);
-            var catalogoMarca = await _catalogoItemMarcaRepo
-                .GetByIdAsync(catalogoItem.CatalogoMarcaId);
-            var catalogoTipo = await _catalogoItemTipoRepo
-                .GetByIdAsync(catalogoItem.CatalogoTipoId);
-
-            // Valida os objetos
+            var catalogoItem = await _catalogoRepo
+                .ObterCatalogoItemPorIdAsync(request.CatalogoItemId);
             if (catalogoItem is null) return NotFound();
-            if (catalogoMarca is null) return NotFound();
-            if (catalogoTipo is null) return NotFound();
 
-            // Popula o objeto response com as informações dos repos
-            response.CatalogoItem = new CatalogoItemDto
+            // Popula o objeto 'response' com o retorno do repo e seus ralacionamentos
+            var dto = new CatalogoItemDto
             {
                 Id = catalogoItem.Id,
                 CatalogoMarcaId = catalogoItem.CatalogoMarcaId,
@@ -72,8 +58,9 @@ namespace Yet.API.CatalogoItemEndpoints
                 ImagemUri = catalogoItem.ImagemUri,
                 Preco = catalogoItem.Preco
             };
-            response.CatalogoMarcaNome = catalogoMarca.Marca;
-            response.CatalogoTipoNome = catalogoTipo.Tipo;
+            response.CatalogoItem = dto;
+            response.CatalogoMarcaNome = catalogoItem.CatalogoMarca.Marca;
+            response.CatalogoTipoNome = catalogoItem.CatalogoTipo.Tipo;
 
             return Ok(response);
         }

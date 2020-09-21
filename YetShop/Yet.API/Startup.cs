@@ -1,5 +1,4 @@
 using AutoMapper;
-using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,7 +14,6 @@ using System.Globalization;
 using System.Text;
 using Yet.API.Helpers;
 using Yet.Core.Constantes;
-using Yet.Core.Entidades.CatalogoAgregar;
 using Yet.Core.Interfaces;
 using Yet.Infrastructure.Data;
 using Yet.Infrastructure.Identity;
@@ -84,6 +82,7 @@ namespace Yet.API
             //services.Configure<CatalogoConfigs>(_configuration);
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
             services.AddScoped<ITokenServico, AutenticacaoTokenServico>();
+            services.AddScoped<ICatalogoRepo, CatalogoRepo>();
 
             var baseUrlConfig = new BaseUrlConfiguration();
             _configuration.Bind(BaseUrlConfiguration.CONFIG_NAME, baseUrlConfig);
@@ -121,7 +120,6 @@ namespace Yet.API
             });
 
             services.AddControllers();
-            services.AddMediatR(typeof(CatalogoItem).Assembly);
             services.AddAutoMapper(typeof(Startup).Assembly);
             services.AddSwaggerGen(c =>
             {
