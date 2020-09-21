@@ -1,6 +1,6 @@
-===================================================
+****===============================================
 =       Yet-Shop ( E-commerce didático )          =
-===================================================
+****===============================================
 
 ### Visão geral
 Este projeto foi desenvolvido com os princípios de 'Clean Code' & 'Clean Architecture', segue algumas das referências na nossa [wiki](https://github.com/marcelobiberg/YetShop/wiki). 
