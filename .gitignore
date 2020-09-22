@@ -1,9 +1,6 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
-/YetShop/Yet.Web/wwwroot/imagens/catalogoItens
-
 *.swp
 *.*~
 project.lock.json
