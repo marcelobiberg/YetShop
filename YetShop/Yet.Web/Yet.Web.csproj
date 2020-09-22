@@ -3,9 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\AreaCliente\**" />
+    <Content Remove="Models\AreaCliente\**" />
+    <EmbeddedResource Remove="Models\AreaCliente\**" />
+    <None Remove="Models\AreaCliente\**" />
+  </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Models\AreaCliente\" />
     <Folder Include="wwwroot\css\site" />
     <Folder Include="wwwroot\js\site" />
   </ItemGroup>

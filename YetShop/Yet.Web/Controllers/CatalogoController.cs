@@ -50,7 +50,9 @@ namespace Yet.Web.Controllers
 
             var vm = new CatalogoViewModel
             {
-                Itens = response.CatalogoItens.ToList(),
+                Itens = response
+                .CatalogoItens
+                .ToList(),
 
                 // Combo para catálogo marcas 
                 Marcas = ComboCatalogoMarcas(response.CatalogoMarcas),
