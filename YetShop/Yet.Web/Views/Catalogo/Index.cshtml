@@ -1,0 +1,89 @@
+﻿@model CatalogoViewModel
+
+<div class="container">
+    <!--Filtros-->
+    <form method="get">
+        <div class="shop-toolbar mb--15 mt--100">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-5 col-3">
+                    <div class="product-view-mode">
+                        <!--Toggle ixibir os itens em colunas ou listas-->
+                        <a class="sortting-btn"
+                           href="#"
+                           data-target="list"><i class="fas fa-list"></i></a>
+                        <a href="#"
+                           data-target="grid"
+                           class="sortting-btn  active"><i class="fas fa-th"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-3 col-md-6 col-9 mt--30 mb--30">
+                    <div class="sorting-selection row">
+                        <select id="marcaFiltroSelecionado"
+                                class="form-control col-lg-6 col-3"
+                                asp-for="@Model.MarcaFiltroSelecionado"
+                                asp-items="@Model.Marcas"></select>
+                        <select id="tipoFiltroSelecionado"
+                                class="form-control col-lg-4 col-6"
+                                asp-for="@Model.TipoFiltroSelecionado"
+                                asp-items="@Model.Tipos"></select>
+                        <button class="btn" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!--Lista catálogo itens-->
+    <div class="shop-product-wrap grid with-pagination row">
+        @foreach (var Item in Model.Itens)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-30">
+                <partial name="_CatalogoItemPartial" for="@Item" />
+            </div>
+        }
+    </div>
+
+    <!--Modal com infos do catálogo item-->
+    <partial name="_Modal" />
+
+    <!--Paginação-->
+    <partial name="_Paginacao" for="@Model.PaginaInfo" />
+</div>
+
+<!--Script responsável por exibir os detalhes do item via modal-->
+@section scripts{
+    <script>
+        (function ($) {
+            function Index() {
+                var $this = this;
+                function initialize() {
+
+                    $(".popup").on('click', function (e) {
+                        modelPopup(this);
+                    });
+
+                    function modelPopup(reff) {
+                        var url = $(reff).data('url');
+
+                        $.get(url).done(function (data) {
+                            debugger;
+                            $('#modal-catalogo-item').find(".modal-dialog").html(data);
+                            $('#modal-catalogo-item > .modal', data).modal("show");
+                        });
+
+                    }
+                }
+
+                $this.init = function () {
+                    initialize();
+                };
+            }
+            $(function () {
+                var self = new Index();
+                self.init();
+            });
+        }(jQuery));
+    </script>
+}

@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Yet.Core.Constantes;
+using Yet.Core.Dto.Catalogo;
 using Yet.Core.Entidades.CatalogoAgregar;
 using Yet.Core.Interfaces;
 

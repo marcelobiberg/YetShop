@@ -23,32 +23,31 @@ namespace Yet.Web
             services.AddHttpContextAccessor();
 
             services.AddScoped<ICatalogoServico, CatalogoServico>();
+            services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                var options = new DeveloperExceptionPageOptions
+                {
+                    SourceCodeLineCount = 2
+                };
+                app.UseDeveloperExceptionPage(options);
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Erro");
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapAreaControllerRoute(
-                    name: "Site",
-                    areaName: "Site",
-                    pattern: "{area:exists}/{controller=Site}/{action=Catalogo}/{id?}");
-
-                endpoints.MapAreaControllerRoute(
-                    name: "Admin",
-                    areaName: "Admin",
-                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "Default",
+                    pattern: "{controller=Catalogo}/{action=Index}/{id?}");
             });
         }
     }

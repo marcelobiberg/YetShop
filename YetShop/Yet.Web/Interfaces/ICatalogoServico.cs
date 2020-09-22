@@ -1,6 +1,6 @@
 ﻿using Refit;
 using System.Threading.Tasks;
-using Yet.Web.Models;
+using Yet.Web.Models.Catalogo;
 
 namespace Yet.Web.Interfaces
 {
@@ -8,5 +8,8 @@ namespace Yet.Web.Interfaces
     {
         [Get("/api/catalogo-itens-paginado")]
         Task<ListaCatalogoItemPaginadaResponse> ListaPaginada(ListaCatalogoItemPaginadaRequest request);
+
+        [Get("/api/catalogo-item/{CatalogoItemId}")]
+        Task<ObterCatalogoItemPorIdResponse> ObterCatalogoItemPorId(int CatalogoItemId);
     }
 }

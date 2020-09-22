@@ -1,0 +1,57 @@
+﻿@model LoginViewModel
+
+<div class="wrap-login100">
+    <form class="login100-form validate-form"
+          method="post"
+          asp-controller="Autenticacao"
+          asp-action="Login">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <span class="login100-form-title p-b-34">
+            Autenticação
+        </span>
+
+        <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Informar e-mail">
+            <input id="email"
+                   asp-for="Email"
+                   class="input100"
+                   type="text"
+                   placeholder="E-mail">
+            <span asp-validation-for="Email"
+                  class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Informar senha">
+            <input id="senha"
+                   asp-for="Senha"
+                   class="input100"
+                   type="password"
+                   placeholder="Senha">
+            <span asp-validation-for="Senha"
+                  class="focus-input100"></span>
+        </div>
+
+        <div class="container-login100-form-btn">
+            <button class="login100-form-btn"
+                    type="submit">
+                Entrar
+            </button>
+        </div>
+
+        <div class="w-full text-center p-t-27 p-b-239">
+            <a asp-controller="Autenticacao"
+               asp-action="ResetarSenha"
+               class="txt2">
+                Esqueceu sua senha?
+            </a>
+        </div>
+
+        <div class="w-full text-center">
+            <a href="#" class="txt3">
+                Criar conta
+            </a>
+        </div>
+    </form>
+
+    <div class="login100-more" style=" background-image: url('../../imagens/Login/coffee_login.jpg');"></div>
+</div>

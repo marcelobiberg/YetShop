@@ -1,0 +1,41 @@
+﻿@model CatalogoItemDto
+
+<div class="product product-style-2">
+    <!--Imagem do item-->
+    <div class="product__image">
+        <img src="@Model.ImagemUri" alt="">
+        <div class="hover-content">
+            <a href="product-details-light.html" class="hover-image">
+                <img src="@Model.ImagemUri" alt="">
+            </a>
+            <div class="hover-btns">
+                <a href="wishlist-light.html" class="single-btn" title="Adicionar a lista de desejos"><i class="ion-md-heart-empty"></i></a>
+
+                <!--Anchor trigger para o modal-->
+                <a class="single-btn popup"
+                   data-url="@Url.Action("CatalogoItemDetalhesModal", "Catalogo", new { catalogoItemId = Model.Id})"
+                   data-toggle="modal"
+                   data-target="#modal-catalogo-item"
+                   title="Ver detalhes"><i class="ion-md-open"></i></a>
+            </div>
+        </div>
+        <span class="product-badge badge--sell-green"></span>
+    </div>
+
+    <div class="product-contents">
+        <h3 class="product__caption">
+            <a href="product-details-light.html">@Model.Nome</a>
+        </h3>
+
+        <div class="product__price">
+            <span class="price--new">R$ @Model.Preco.ToString("N2")</span>
+        </div>
+        <p class="product-info-para">
+            @Model.Descricao
+        </p>
+        <div class="product__btn">
+            <a href="cart-light.html" class="theme-btn-outlined--type-2">Adicionar ao carrinho</a>
+        </div>
+    </div>
+</div>
+

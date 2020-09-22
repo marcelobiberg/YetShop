@@ -1,0 +1,55 @@
+﻿@model ModalCatalogoItemViewModel
+
+<div class="modal-content">
+    <div class="cross-btn">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="product product--details product-details--left-thumbnail">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="product__image">
+                        <div class="product-image-main">
+                            <img id="zoom_03" src="@Model.ImagemUri"
+                                 data-zoom-image="@Model.ImagemUri" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+
+                    <div class="product-description">
+                        <h3 class="product__caption">@Model.Nome</h3>
+                        <div class="product__price">
+                            <span class="price--new">R$ @Model.Preco.ToString("N2")</span>
+                        </div>
+                        <div class="product-description--list">
+                            <br>
+                            <!--Adicionar e-mail do fabricante ( brands - Marcas )-->
+                            <p>Fabricante: <span class="text-primary">@Model.MarcaNome</span> </p>
+                            <p>Código produto: <span class="text-primary">@Model.Id</span> </p>
+                        </div>
+                        <div class="product-description--breif">
+                            <p>
+                                @Model.Descricao
+                            </p>
+                        </div>
+                        <div class="product-buttons--group ">
+                            <div class="single-btn-block count-input-block">
+                                <input type="number" class="form-control text-center" value="1">
+                                <div class="count-input-btns">
+                                    <button class="inc-ammount count-btn">+</button>
+                                    <button class="dec-ammount count-btn">-</button>
+                                </div>
+                            </div>
+                            <div class="single-btn-block">
+                                <a href="cart.html" class="theme-btn ">Adicionar ao carrinho</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

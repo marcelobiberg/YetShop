@@ -278,7 +278,7 @@ jQuery(document).ready(function () {
 
         /*----------  Range Slider  ----------*/
         $(function () {
-            $(".belly-range-slider").slider({
+            $(".range-slider").slider({
                 range: true,
                 min: 0,
                 max: 500,
@@ -287,8 +287,8 @@ jQuery(document).ready(function () {
                     $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
                 }
             });
-            $("#amount").val("$" + $(".belly-range-slider").slider("values", 0) +
-                " - $" + $(".belly-range-slider").slider("values", 1));
+            $("#amount").val("$" + $(".range-slider").slider("values", 0) +
+                " - $" + $(".range-slider").slider("values", 1));
         });
 
 
@@ -302,9 +302,9 @@ jQuery(document).ready(function () {
             $(this).addClass('active');
             shopProductWrap.removeClass('grid list').addClass(viewMode);
             if (shopProductWrap.hasClass('grid')) {
-                $('.belly-product').removeClass('product-view--list')
+                $('.product').removeClass('product-view--list')
             } else {
-                $('.belly-product').addClass('product-view--list')
+                $('.product').addClass('product-view--list')
             }
         })
 

@@ -6,7 +6,7 @@ using Yet.Core.Entidades;
 namespace Yet.Core.Interfaces
 {
     /// <summary>
-    /// Tasks reponsáveis por manipular os modelos
+    /// Repositório genérico
     /// </summary>
     /// <typeparam name="T">Param genérico</typeparam>
     public interface IRepoAsync<T> where T : EntidadeBase

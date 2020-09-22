@@ -13,7 +13,7 @@ namespace Yet.API.AuthEndpoints
     {
         #region Campos
         private readonly SignInManager<UsuarioApp> _signInManager;
-        private readonly ITokenServico _tokenPermissaoService;
+        private readonly ITokenServico _tokenServico;
         #endregion
 
         #region Ctor
@@ -21,7 +21,7 @@ namespace Yet.API.AuthEndpoints
             ITokenServico tokenService)
         {
             _signInManager = signInManager;
-            _tokenPermissaoService = tokenService;
+            _tokenServico = tokenService;
         }
         #endregion
 
@@ -40,15 +40,20 @@ namespace Yet.API.AuthEndpoints
             var response = new AutenticacaoResponse(request.CorrelacaoId());
 
             // Valida o usuário e loga no sistema
-            // Assinaturaas do método PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
             var result = await _signInManager.PasswordSignInAsync(request.Usuario, request.Senha, false, true);
+
+            // popula a objeto response com o resultado da validação do usuário ( true/false )
+            response.Result = result.Succeeded;
+
+            // . . Se nao encontrou usuário retorna objeto response com Result = false
+            if (!result.Succeeded) return response;
 
             // Popula o objeto ( AutenticacaoResponse )
             response.Result = result.Succeeded;
             response.IsLockedOut = result.IsLockedOut;
             response.IsNotAllowed = result.IsNotAllowed;
             response.Usuario = request.Usuario;
-            response.AutenticacaoToken = await _tokenPermissaoService.ObterTokenAsync(request.Usuario);
+            response.AutenticacaoToken = await _tokenServico.ObterTokenAsync(request.Usuario);
 
             return response;
         }

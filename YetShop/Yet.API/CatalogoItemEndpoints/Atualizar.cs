@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Yet.Core.Constantes;
+using Yet.Core.Dto.Catalogo;
 using Yet.Core.Entidades.CatalogoAgregar;
 using Yet.Core.Interfaces;
 
@@ -31,7 +32,7 @@ namespace Yet.API.CatalogoItemEndpoints
         #endregion
 
         #region Métodos
-        [HttpPut("api/catalogo-itens")]
+        [HttpPut("api/catalogo-item-update")]
         [SwaggerOperation(
             Summary = "Atualiza um item do catálogo",
             Description = "Atualiza um item do catálogo",

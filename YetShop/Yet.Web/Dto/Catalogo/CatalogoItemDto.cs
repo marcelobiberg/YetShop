@@ -1,4 +1,6 @@
-﻿namespace Yet.API.CatalogoItemEndpoints
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Yet.Web.Dto.Catalogo
 {
     public class CatalogoItemDto
     {

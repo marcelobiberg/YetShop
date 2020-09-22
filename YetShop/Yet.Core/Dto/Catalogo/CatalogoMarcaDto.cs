@@ -1,6 +1,6 @@
-﻿namespace Yet.API.CatalogoTipoEndpoints
+﻿namespace Yet.Core.Dto.Catalogo
 {
-    public class CatalogoTipoDto
+    public class CatalogoMarcaDto
     {
         public int Id { get; set; }
         public string Nome { get; set; }
