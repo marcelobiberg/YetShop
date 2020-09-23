@@ -15,5 +15,7 @@
         public const string EMAIL_ADMINISTRADOR = "biberg.marcelo@gmail.com";
 
         public const string USUARIO_ADMINISTRADOR = "Admin";
+        
+        public const byte VALIDADE_TOKEN_DIAS = 7;
     }
 }

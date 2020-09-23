@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using Yet.Web.Constantes;
 using Yet.Web.Interfaces;
 using Yet.Web.Models.Autenticacao;
 using Yet.Web.ViewModels.Autenticacao;
@@ -13,26 +14,23 @@ namespace Yet.Web.Controllers
         #region Campos
         private readonly IAutenticacaoServico _autenticacaoServico;
         private ILogger<ICatalogoServico> _logger;
+        private ILocalStorageServico _localStorageServico;
         #endregion
 
         #region Ctor
         public AutenticacaoController(IAutenticacaoServico autenticacaoServico,
             ILogger<ICatalogoServico> logger,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            ILocalStorageServico localStorageServico)
         {
             _autenticacaoServico = autenticacaoServico;
             _logger = logger;
+            _localStorageServico = localStorageServico;
         }
         #endregion
 
         #region Métodos
         public IActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Bloqueado()
         {
             return View();
         }
@@ -56,7 +54,10 @@ namespace Yet.Web.Controllers
             // . . Se tudo Ok redireciona para a área do cliente no dashboard com infos do objeto response
             if (response.Result)
             {
-                if (!string.IsNullOrEmpty(returnUrl)) return LocalRedirect(returnUrl);
+                // Salva localmente o objeto AutenticacaoReponse
+                _localStorageServico.CacheAutenticacaoResponseLocalAsync(BancoLocal.AUTENTICACAO_KEY, response);
+
+                 if (!string.IsNullOrEmpty(returnUrl)) return LocalRedirect(returnUrl);
 
                 // TODO: Colocar aqui objeto com infos do cadastro
                 return RedirectToAction("Dashboard", "AreaCliente");
@@ -79,6 +80,12 @@ namespace Yet.Web.Controllers
                 ModelState.AddModelError(string.Empty, "E-mail e/ou senha incorretos");
                 return View(vm);
             }
+        }
+
+        [HttpGet]
+        public ActionResult Bloqueado()
+        {
+            return View();
         }
 
         [HttpGet("EnviarCredenciais")]

@@ -1,3 +1,4 @@
+using Hanssens.Net;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,8 +23,11 @@ namespace Yet.Web
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
 
+            services.AddScoped<LocalStorage>();
+
             services.AddScoped<ICatalogoServico, CatalogoServico>();
             services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
+            services.AddScoped<ILocalStorageServico, LocalStorageServico>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
