@@ -52,11 +52,7 @@ namespace Yet.API
                 options.UseSqlServer(identityCon));
 
             // Configs do identity service
-            services.AddIdentity<UsuarioApp, IdentityRole>()
-                .AddEntityFrameworkStores<AutenticacaoContexto>()
-                .AddDefaultTokenProviders();
-
-            services.Configure<IdentityOptions>(options =>
+            services.AddIdentity<UsuarioApp, IdentityRole>(options =>
             {
                 // Password settings.
                 options.Password.RequireDigit = false;
@@ -67,15 +63,17 @@ namespace Yet.API
                 options.Password.RequiredUniqueChars = 1;
 
                 // Lockout settings.
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(20);
-                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
+                options.Lockout.MaxFailedAccessAttempts = 3;
                 options.Lockout.AllowedForNewUsers = true;
 
                 // User settings.
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = true;
-            });
+            })
+                .AddEntityFrameworkStores<AutenticacaoContexto>()
+                .AddDefaultTokenProviders();
 
             // Adicionas o serviços da aplicação
             services.AddScoped(typeof(IRepoAsync<>), typeof(EfRepo<>));
@@ -172,6 +170,7 @@ namespace Yet.API
 
             app.UseCors(CORS_POLICY);
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.

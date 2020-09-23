@@ -7,7 +7,7 @@ namespace Yet.API.AuthEndpoints
     public class AutenticacaoResponse : BaseResponse
     {
         #region Campos
-        public string Usuario { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
         public string AutenticacaoToken { get; set; } = string.Empty;
         public bool IsLockedOut { get; set; } = false;
         public bool IsNotAllowed { get; set; } = false;

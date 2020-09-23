@@ -26,13 +26,13 @@ namespace Yet.Infrastructure.Servicos
         #endregion
 
         #region Métodos
-        public async Task<string> ObterTokenAsync(string userName)
+        public async Task<string> ObterTokenAsync(string email)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(Autenticacao.SECRET_KEY);
-            var user = await _userManager.FindByNameAsync(userName);
+            var user = await _userManager.FindByEmailAsync(email);
             var roles = await _userManager.GetRolesAsync(user);
-            var claims = new List<Claim> { new Claim(ClaimTypes.Name, userName) };
+            var claims = new List<Claim> { new Claim(ClaimTypes.Name, email) };
 
             foreach (var role in roles)
             {
@@ -42,7 +42,7 @@ namespace Yet.Infrastructure.Servicos
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims.ToArray()),
-                Expires = DateTime.UtcNow.AddDays(7),
+                Expires = DateTime.UtcNow.AddDays(Autenticacao.VALIDADE_TOKEN_DIAS),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
