@@ -1,0 +1,21 @@
+﻿<div class="wrap-login100">
+    <form class="login100-form validate-form"
+          method="post"
+          asp-controller="Autenticacao"
+          asp-action="Login">
+
+        <span class="login100-form-title p-b-34">
+            Usuário bloqueado por tempo limitado!
+        </span>
+
+        <div class="w-full text-center p-t-27 p-b-239">
+            <a asp-controller="Autenticacao"
+               asp-action="ResetarSenha"
+               class="txt2">
+                Esqueceu sua senha?
+            </a>
+        </div>
+    </form>
+
+    <div class="login100-more" style=" background-image: url('../../imagens/Login/coffee_login.jpg');"></div>
+</div>

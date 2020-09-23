@@ -1,0 +1,29 @@
+﻿@model EnviarCredenciaisViewModel
+
+<form class="login100-form validate-form"
+      method="post"
+      asp-controller="Autenticacao"
+      asp-action="EnviarCredenciais">
+
+    <span class="login100-form-title p-b-34">
+        Recuperação de senha via e-mail
+    </span>
+
+    <div class="wrap-input100 validate-input m-b-20" data-validate="Informar e-mail">
+        <input id="email"
+               asp-for="Email"
+               class="input100"
+               type="text"
+               placeholder="E-mail">
+        <span asp-validation-for="Email"
+              class="focus-input100"></span>
+    </div>
+
+    <div class="container-login100-form-btn">
+        <button class="login100-form-btn mb--300"
+                type="submit">
+            Enviar
+        </button>
+    </div>
+</form>
+
